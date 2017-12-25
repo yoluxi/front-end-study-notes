@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>background-blend-mode</title>
+    <style>
+        .notice {
+            color: #ff727e;
+        }
+
+        section {
+            position: relative;
+        }
+
+        .css-container {
+            position: absolute;
+            top: 100px;
+            left: 300px;
+        }
+
+        .pic {
+            width: 200px;
+            height: 200px;
+            background-image: url(./test.jpg);
+            background-size: cover;
+        }
+
+        .pic1 {
+            width: 200px;
+            height: 200px;
+            background-image: url(./test.jpg);
+            background-color: #f00;
+            background-blend-mode: lighten;
+            background-size: cover;
+        }
+
+        .pic2 {
+            width: 200px;
+            height: 200px;
+            background-image: url(./test.jpg), linear-gradient(#f00, #00f);
+            background-blend-mode: lighten;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+<h3>混合模式 mix-blend-mode 与 background-blend-mode</h3>
+<ul>
+    <li>mix-blend-mode 用于多个不同标签间的混合模式</li>
+    <li>background-blend-mode 用于单个标签间内背景图与渐变背景间的混合模式。</li>
+</ul>
+
+<h4>使用 background-blend-mode: lighten 实现任意图片颜色赋色技术</h4>
+<p>假设我们有这样一张图片，JPG、PNG、GIF 都可以，但是有一个前提要求，就是<span class="notice">黑色纯色，背景白色</span>：</p>
+
+<!-- 测试 -->
+<section>
+    <div class="pic"></div>
+    <div class="pic1"></div>
+    <div class="pic2"></div>
+    <div class="css-container">
+        <pre>
+         .pic {
+            width: 200px;
+            height: 200px;
+            background-image: url(./test.jpg);
+            background-size: cover;
+        }
+
+        .pic1 {
+            width: 200px;
+            height: 200px;
+            background-image: url(./test.jpg);
+            background-color:  #f00;
+            background-blend-mode: lighten;
+            background-size: cover;
+        }
+
+        .pic2 {
+            width: 200px;
+            height: 200px;
+            background-image: url(./test.jpg), linear-gradient(#f00, #00f);
+            background-blend-mode: lighten;
+            background-size: cover;
+        }
+        </pre>
+    </div>
+</section>
+
+<h4>使用场景</h4>
+<p>
+    黑色纯色，背景白色可能局限了这个技巧的使用场景，但是在很多白色底色的页面中，这个方法还是可以很好的发挥作用，许多 ICON 图片不再需要两个或者更多个颜色的版本！
+</p>
+</body>
+</html>
