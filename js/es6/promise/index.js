@@ -35,3 +35,23 @@ function testPromise() {
             }, Math.random() * 2000  + 1000)    
     })
 }
+
+// 事件  回调  promise  
+
+// promise 是异步的一种解决方案
+// promise 的特点 
+// 1 对象状态不受外界影响  3中状态 pending fulfilled reject
+// 2 一旦状态改变  就不会再变  
+
+// promise的缺点  1. 无法中途取消  2 如果不添加回调 则会在内部抛出错误  3 处于pending的状态时  无法得知在哪个阶段  
+
+const promise = new Promise(function(resolve, reject) {
+    if(true) {
+        resolve(value)
+    }else {
+        reject(value)
+    }
+})
+
+
+
