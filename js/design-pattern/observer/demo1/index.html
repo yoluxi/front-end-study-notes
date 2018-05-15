@@ -2,9 +2,51 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>观察者模式</title>
 </head>
 <body>
-$END$
+<button id="addNewObserver">add new checkbox</button>
+<input id="mainCheckbox" type="checkbox" >
+<div id="observersContainer"></div>
+<script src="Subject.js"></script>
+<script>
+    // observer
+    function Observer() {
+        this.update = function () {
+
+        }
+    }
+    // extend an object with an extension
+    function extend(obj, extension) {
+        for (var key in extension) {
+            obj[key] = extension[key]
+        }
+    }
+
+    var controlCheckbox = document.getElementById('mainCheckbox'),
+        addBtn = document.getElementById('addNewObserver'),
+        container = document.getElementById('observersContainer');
+
+    //
+    extend(controlCheckbox, new Subject())
+
+    controlCheckbox.onclick = function () {
+        controlCheckbox.notify(controlCheckbox.checked)
+    }
+
+    addBtn.onclick = addNewObserver
+    
+    function addNewObserver() {
+        // 创建一个新的checkbox
+        var check = document.createElement('input')
+        check.type = 'checkbox'
+        extend( check, new Observer())
+        check.update = function (value) {
+            this.checked = value
+        }
+        controlCheckbox.addObserver(check)
+        container.appendChild(check)
+    }
+</script>
 </body>
 </html>

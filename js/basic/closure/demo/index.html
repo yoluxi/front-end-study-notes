@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>闭包实现命令模式</title>
+</head>
+<body>
+    <button id="execute">点击我之行命令</button>
+    <button id="undo">点击我之行命令</button>
+
+    <script>
+        var Tv = {
+            open: function () {
+                console.log('open')
+            },
+            close: function () {
+                console.log('close')    
+            }          
+        }
+
+        var OpenTvCommand = function ( recevier ) {
+             this.recevier = recevier   
+        }
+        
+        OpenTvCommand.prototype.excute = function () {
+            this.recevier.open() // 执行命令
+        }
+
+        OpenTvCommand.prototype.undo = function () {
+            this.recevier.close() // 关闭
+        }
+
+        var setCommand = function(commond) {
+            document.getElementById('excute').onclick = function() {
+                commond.excute()
+            }
+
+            document.getElementById('undo').onclick = function() {
+                command.undo()
+            }
+        }
+
+        setCommand(new OpenTvCommand(Tv))
+    </script>
+</body>
+</html>
