@@ -24,5 +24,16 @@ var timer = setInterval(function(){
 }, 0)
 
 
+var a = 0;
+var b = 0;
+function A(a) {
+    A = function(b) {
+        alert(a+b++)  
+    }
+    alert(a++)
+}
+
+A(1)
+A(2)
 
 
