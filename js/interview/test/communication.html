@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>跨页通信</title>
+</head>
+<body>
+    
+
+    <script>
+        // postMessage
+        // let childPage = window.open('./child.html', 'child')
+        
+        // childPage.onload = () => {
+        //     childPage.postMessage('hello', '*')
+        // }
+
+
+        // localStorage
+        // localStorage.setItem('test', 'test')     
+       
+
+        // BroadcastChannel
+        const channel  = new BroadcastChannel('tabs')
+        channel.onmessage = e => {
+            console.log(e)
+        }
+    </script>
+</body>
+</html>
